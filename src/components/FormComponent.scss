@@ -1,0 +1,340 @@
+@import '../sass/variables';
+@import '../sass/mixins';
+
+.form {
+  position: absolute;
+  top: 5.6rem;
+  left: 50%;
+  transform: translate(-50%);
+
+  @include respond(tablet) {
+    top: 2.5rem;
+    width: 100%;
+  }
+
+  &__header {
+    text-align: center;
+    color: $color-white;
+    font-weight: 300;
+    font-size: 4.8rem;
+    margin-left: 19rem;
+
+    @include respond(tablet) {
+      margin-left: 0;
+      font-size: 3.6rem;
+    }
+  }
+
+  &__leftBox {
+    background-color: $background-color2;
+
+    @include respond(tablet) {
+      display: none;
+    }
+  }
+
+  &__lines {
+    position: absolute;
+    top: 115px;
+    left: 12px;
+  }
+
+  &__layer {
+    height: 100%;
+  }
+
+  &__container {
+    display: flex;
+    position: relative;
+    margin-top: 4.8rem;
+
+    @include respond(tablet) {
+      margin-top: 2.8rem;
+    }
+  }
+
+  &__personal {
+    &--container {
+      background-color: $color-white;
+      padding: 4.2rem 5rem;
+      width: 37rem;
+
+      @include respond(tablet) {
+        width: 100%;
+        padding: 1.5rem;
+        margin: 0 1.5rem;
+      }
+    }
+    &--header {
+      font-size: 1.4rem;
+      width: 31rem;
+      margin-bottom: 5.6rem;
+    }
+  }
+
+  &__group {
+    &:not(:last-child) {
+      margin-bottom: 2.4rem;
+    }
+
+    &--mobile,
+    &--birth {
+      display: flex;
+      position: relative;
+      margin-top: 1.2rem;
+    }
+
+    &--radio {
+      display: inline-block;
+      margin-top: 1.2rem;
+      width: 5rem;
+      height: 5rem;
+      border: 2px solid $color-grey;
+      font-size: 1.6rem;
+      position: relative;
+
+      &:first-of-type {
+        margin-right: 2.5rem;
+      }
+    }
+
+    &--radio-active {
+      border-color: $color-active;
+    }
+  }
+
+  &__label {
+    font-size: 1.1rem;
+    padding-left: 1.4rem;
+    display: block;
+
+    &--error {
+      font-size: 1.1rem;
+      padding-left: 1.4rem;
+      color: $color-error;
+      margin-top: .5rem;
+      position: absolute;
+    }
+
+    &--radio {
+      position: absolute;
+      top: 1.5rem;
+      left: 1rem;
+      cursor: pointer;
+    }
+  }
+
+  &__input,
+  &__select {
+    font-size: 1.6rem;
+    padding: 1.6rem 1.6rem 1.2rem 1.4rem;
+    border: none;
+    border-bottom: 2px solid $color-grey;
+    display: block;
+    box-sizing: border-box;
+  }
+
+  &__input,
+  &__select {
+    &:focus {
+      outline: none;
+      border-bottom: 2px solid $background-color3;
+      color: $background-color2;
+    }
+  }
+
+  &__input {
+    width: 100%;
+
+    &--error {
+      border-bottom: 2px solid $color-error;
+      color: $color-error;
+    }
+
+    &--day {
+      border: 2px solid $color-grey;
+      width: 5rem;
+      height: 5rem;
+      padding: 0;
+      text-align: center;
+
+      &:focus {
+        outline: none;
+        border: 2px solid $background-color3;
+        color: $background-color2;
+      }
+
+      &-error {
+        border: 2px solid $color-error;
+        color: $color-error;
+      }
+    }
+
+    &--year {
+      border: 2px solid $color-grey;
+      height: 5rem;
+      padding: 0;
+      padding-left: 1.7rem;
+      flex: 1;
+      
+      &:focus {
+        outline: none;
+        border: 2px solid $background-color3;
+        color: $background-color2;
+      }
+
+      &-error {
+        border: 2px solid $color-error;
+        color: $color-error;
+      }
+    }
+  }
+
+  &__select {
+    -webkit-appearance: none;
+    margin-right: 2rem;
+    padding-right: 3.5rem;
+
+    &--radio {
+      position: absolute;
+      display: none;
+    }
+
+    &--button {
+      position: absolute;
+      left: 3.2rem;
+      cursor: pointer;
+      height: 1.5rem;
+      width: 1.5rem;
+      border: 2px solid $color-grey;
+      background-color: $color-white;
+
+      &::after {
+        content: "";
+        height: .5rem;
+        width: .35em;
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: $color-active;
+        opacity: 0;
+      }
+    }
+
+    &--month,
+    &--monthNum {
+      border: 2px solid $color-grey;
+      padding: 0;
+      padding-left: 1.7rem;
+      margin-right: 0;
+
+      &:focus {
+        outline: none;
+        border: 2px solid $background-color3;
+        color: $background-color2;
+      }
+
+      &-error {
+        border: 2px solid $color-error;
+        color: $color-error;
+      }
+    }
+
+    &--month {
+      width: 13.5rem;
+
+      @include respond(tablet) {
+        display: none;
+      }
+    }
+
+    &--monthNum {
+      width: 6rem;
+      display: none;
+
+      @include respond(tablet) {
+        display: block;
+      }
+    }
+  }
+
+  &__select--radio:checked ~ &__select--button::after {
+    opacity: 1;
+  }
+
+  &__select--radio:checked ~ &__select--button {
+    border-color: $color-active;
+  }
+
+  &__triangle {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid $color-grey;
+    position: absolute;
+    left: 9.5rem;
+    top: 2.3rem;
+
+    &--month {
+      left: 18rem;
+
+      @include respond(tablet) {
+        left: 11rem;
+      }
+    }
+  }
+
+  &__break {
+    width: 1rem;
+    height: .2rem;
+    background-color: $color-grey;
+    margin: 2.3rem .5rem;
+  }
+
+  &__button--container {
+    display: flex;
+    position: absolute;
+    bottom: -2.5rem;
+    right: -5rem;
+
+    @include respond(tablet) {
+      right: 50%;
+      transform: translate(50%);
+    }
+  }
+
+  &__button {
+    width: 19rem;
+    height: 5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border: none;
+    background-image: $color-gradient;
+    color: $color-white;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__arrow {
+    width: 5rem;
+    height: 5rem;
+    background-color: $color-arrow;
+    position: relative;
+  }
+
+  &__arrow--img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
